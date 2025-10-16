@@ -36,4 +36,32 @@ This system combines **Embedded IoT Hardware** with **Deep Learning** to achieve
 |  SoftwareSerial / WiFi | Data communication |
 
 ---
+***
+Real-Time-Embedded-System-for-Precision-Green-House-and-Smart-Irrigation/
+│
+├── 📁 CNN_Model/
+│   ├── train.py
+│   ├── test.py
+│   ├── model.h5
+│   ├── requirements.txt
+│
+├── 📁 Arduino_Code/
+│   ├── main.ino
+│   ├── ESP_Wahaj.h
+│   ├── LCD_I2C.h
+│
+├── 📁 Dataset/
+│   ├── crop_dataset.csv
+│   └── Leaf_Image_Dataset.zip (Google Drive)
+│
+├── 📁 Results/
+│   ├── output_sample1.png
+│   ├── lcd_display.png
+│
+└── README.md
+***
+
+---
+
+
 
