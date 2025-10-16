@@ -64,8 +64,69 @@ Real-Time-Embedded-System-for-Precision-Green-House-and-Smart-Irrigation/
 │   ├── lcd_display.png
 │
 └── README.md
-pgsql
+---
+
+##  How to Run (Python + IoT)
+
+###  Python / CNN Model
+
+1. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+Download the dataset from Google Drive:
+Leaf Image Dataset (Google Drive)
+
+Place the downloaded dataset inside the Dataset/ folder.
+
+Train the CNN model
+
+bash
 Copy code
+python train.py
+Once training is complete, a file named model.h5 will be generated automatically.
+
+Test the model
+
+bash
+Copy code
+python test.py
+ IoT / Arduino Setup
+Open main.ino inside the Arduino_Code/ folder using Arduino IDE.
+
+Connect your NodeMCU / ESP8266 board.
+
+Install the following libraries (via Library Manager or manually):
+
+SoftwareSerial.h
+
+Adafruit_MCP3008.h
+
+SimpleDHT.h
+
+LCD_I2C.h
+
+ESP_Wahaj.h
+
+Select the correct Board and COM Port:
+
+scss
+Copy code
+Tools → Board → NodeMCU 1.0 (ESP-12E Module)
+Tools → Port → [Your Port]
+Click Upload to flash the code to your board.
+
+Open Serial Monitor at 9600 baud rate to see live readings of:
+
+Temperature
+
+Humidity
+
+pH value
+
+Soil moisture
+
+The LCD will display real-time values, and data will be sent to the web or Power BI dashboard for visualization.
+
 
 
 
