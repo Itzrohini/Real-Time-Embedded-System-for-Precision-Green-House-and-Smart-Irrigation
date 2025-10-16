@@ -66,7 +66,7 @@ Real-Time-Embedded-System-for-Precision-Green-House-and-Smart-Irrigation/
 └── README.md
 ---
 
-##  How to Run (Python + IoT)
+###  How to Run (Python + IoT)
 
 ###  Python / CNN Model
 
