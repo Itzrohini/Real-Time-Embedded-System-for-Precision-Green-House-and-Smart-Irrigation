@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Health Detector</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 900px;
+            margin: auto;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 255, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+        .value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00FF7F;
+        }
+        .loading {
+            animation: blink 1s infinite alternate;
+            color: #FFD700;
+        }
+        @keyframes blink {
+            from { opacity: 1; }
+            to { opacity: 0.5; }
+        }
+    </style>
+    <script>
+        function fetchData() {
+            const channelId = 670492; 
+            const urls = [
+                `https://api.thingspeak.com/channels/${channelId}/fields/1.json?results=1`,
+                `https://api.thingspeak.com/channels/${channelId}/fields/2.json?results=1`,
+                `https://api.thingspeak.com/channels/${channelId}/fields/3.json?results=1`,
+                `https://api.thingspeak.com/channels/${channelId}/fields/4.json?results=1`,
+                `https://api.thingspeak.com/channels/${channelId}/fields/5.json?results=1`,
+                `https://api.thingspeak.com/channels/${channelId}/fields/6.json?results=1`,
+`https://api.thingspeak.com/channels/${channelId}/fields/7.json?results=1`
+            ];
+
+            const fields = ['temperature', 'humidity', 'ph', 'nitrogen', 'moisture', 'Crop','Disease'];
+
+            urls.forEach((url, index) => {
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById(fields[index]).innerText = data.feeds[0][`field${index + 1}`];
+                    })
+                    .catch(() => {
+                        document.getElementById(fields[index]).innerText = "Error";
+                    });
+            });
+        }
+
+        setInterval(fetchData, 5000);
+    </script>
+</head>
+<body onload="fetchData()">
+    <h1>🌿 Plant Health Detector 🌿</h1>
+    <div class="container">
+        <div class="card">
+            <h2>🌡 Temperature</h2>
+            <p class="value" id="temperature">Loading...</p>
+        </div>
+        <div class="card">
+            <h2>💧 Humidity</h2>
+            <p class="value" id="humidity">Loading...</p>
+        </div>
+        <div class="card">
+            <h2>⚗️ pH</h2>
+            <p class="value" id="ph">Loading...</p>
+        </div>
+        <div class="card">
+            <h2>🌱 Nitrogen</h2>
+            <p class="value" id="nitrogen">Loading...</p>
+        </div>
+        <div class="card">
+            <h2>🚰 Moisture</h2>
+            <p class="value" id="moisture">Loading...</p>
+        </div>
+        <div class="card">
+            <h2>✅ Crop</h2>
+            <p class="value" id="Crop">Loading...</p>
+        </div>
+        <div class="card">
+            <h2>✅ Disease</h2>
+            <p class="value" id="Disease">Loading...</p>
+        </div>
+    </div>
+</body>
+</html>
