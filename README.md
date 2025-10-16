@@ -36,7 +36,7 @@ This system combines **Embedded IoT Hardware** with **Deep Learning** to achieve
 |  SoftwareSerial / WiFi | Data communication |
 
 ---
-***
+()**
 Real-Time-Embedded-System-for-Precision-Green-House-and-Smart-Irrigation/
 │
 ├── 📁 CNN_Model/
@@ -59,7 +59,7 @@ Real-Time-Embedded-System-for-Precision-Green-House-and-Smart-Irrigation/
 │   ├── lcd_display.png
 │
 └── README.md
-***
+()**
 
 ---
 
